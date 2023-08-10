@@ -10,6 +10,7 @@ CORS(app, origins='http://localhost:8000')
 # search is utilized to find SMILE
 
 # linear search test
+#may not be used in the future, use for looking for SMILE that user inputed
 def linear_smile(smile_frame, smile):
     for item in smile_frame:
         if item == smile:
@@ -23,89 +24,89 @@ def get_reactant_opt(search_smile, find_hydro):
 
     #idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
     idx = find_hydro.loc[find_hydro["reactant_smiles"] == search_smile].index
-    print(idx)
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['reactant_opt_energy'])
+    print(idx) #test to print index
+    df_idx = find_hydro.loc[idx] #df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['reactant_opt_energy']) #test to print value
 
-    #looping code
+    #looping code test to see if
     for index in idx:
         reactant_opt_energy = find_hydro.loc[index, 'reactant_opt_energy']
-        print(f"Index: {index}, Reactant Opt Energy: {reactant_opt_energy}")
+        print(f"Index: {index}, Reactant Opt Energy: {reactant_opt_energy}") #
 
-    reactant_opt_energy_values = df_idx['reactant_opt_energy'].tolist()
+    reactant_opt_energy_values = df_idx['reactant_opt_energy'].tolist() #return value to main
     return reactant_opt_energy_values
 
 
 def get_reactant_sp(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx) #test to print index
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['reactant_sp_energy'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['reactant_sp_energy'])#test to print value
 
-    reactant_sp_values = df_idx["reactant_sp_energy"].tolist()
+    reactant_sp_values = df_idx["reactant_sp_energy"].tolist() #return value to main
     return reactant_sp_values
 
 
 def get_enthalpy(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx)#test to print index
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['reactant_enthalpy'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['reactant_enthalpy'])#test to print value
 
-    reactant_enthalpy = df_idx["reactant_enthalpy"].tolist()
+    reactant_enthalpy = df_idx["reactant_enthalpy"].tolist()#return value to main
     return reactant_enthalpy
 
 
 def get_entropy(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx)#test to print index
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['reactant_entropy'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['reactant_entropy'])#test to print value
 
-    reactant_entropy = df_idx["reactant_entropy"].tolist()
+    reactant_entropy = df_idx["reactant_entropy"].tolist()#return value to main
     return reactant_entropy
 
 
 def get_product_smiles(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx)#test to print index in terminal
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['product_smiles'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['product_smiles'])#test to print value in terminal
 
-    product_smiles = df_idx["product_smiles"].tolist()
+    product_smiles = df_idx["product_smiles"].tolist()#return value to main
     return product_smiles
 
 
 def get_functional_group(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx)#test to print index in terminal
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['functional_group_reacted'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['functional_group_reacted'])#test to print value in terminal
 
 
 
 
 def get_product_opt(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx)#test to print index in terminal
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['product_opt_energy'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['product_opt_energy'])#test to print value in terminal
 
     product_opt_energy = df_idx["product_opt_energy"].tolist()
     return product_opt_energy
 
 def get_product_sp(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
-    print(idx)
+    print(idx)#test to print index in terminal
 
-    df_idx = find_hydro.loc[idx]
-    print(df_idx['product_sp_energy'])
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
+    print(df_idx['product_sp_energy'])#test to print value in terminal
 
     product_sp_energy = df_idx["product_sp_energy"].tolist()
     return product_sp_energy
@@ -115,7 +116,7 @@ def get_product_enthalpy(search_smile, find_hydro):
     idx = find_hydro.index[find_hydro["reactant_smiles"] == search_smile]
     print(idx)
 
-    df_idx = find_hydro.loc[idx]
+    df_idx = find_hydro.loc[idx]#df_idx stores the index in order to match the index to value being serached for
     print(df_idx['product_enthalpy'])
 
     product_enthalpy = df_idx["product_enthalpy"].tolist()
@@ -201,21 +202,23 @@ def index():
     return welcome_message + render_template('ASPIRES_web.html')
 
 
-@app.route('/hello', methods=['GET'])
+@app.route('/hello', methods=['GET']) #Welcome message is to be displayed as
 def hello():
     message = "Welcome!"
     response = {'message': message}
     return jsonify(response)
 
-
+#database is read from a json file into a dataframe
 hydro_df = pd.read_json('Hydrolysis_reactions_for_UI_creation_ASPIRES.json')
 
 
 @app.route('/main', methods=['POST'])
 def main():
+    #reactant_smiles column is read out from the the dataframe into list
     list_smiles = hydro_df.loc[:, "reactant_smiles"]
     get_smiles = []
 
+    #
     i = 0
     while i < len(list_smiles):
         smiles = hydro_df.reactant_smiles.iloc[i]
@@ -223,16 +226,22 @@ def main():
         i += 1
 
     search_smiles = request.form.get('smile')
-    if request.method == "POST":
+    if request.method == "POST": #make POST request to
         search_smiles = request.form['smile']
 
+        #
         result_smile = linear_smile(get_smiles, search_smiles)
+
+        #
         # result_smile = hydro_df[hydro_df["reactant_smiles"].str.contains(search_smiles, regex=False)]
 
     # if SMILE is found, display SMILE
     if result_smile is not None:
         # found_smiles = result_smile['reactant_smiles'].tolist()
+
+        #found SMILE is stored here
         found_smiles = result_smile
+        #matching values are returned here from their individual search functions and stored in variables
         reactant_opt_energy_values = get_reactant_opt(search_smiles, hydro_df)
         reactant_sp_values = get_reactant_sp(search_smiles, hydro_df)
         enthalpy_value = get_enthalpy(search_smiles, hydro_df)
@@ -248,10 +257,13 @@ def main():
         dS_value = get_dS(search_smiles, hydro_df),
         dG_opt_value = get_dG_opt(search_smiles, hydro_df),
         dG_sp_value = get_dG_sp(search_smiles, hydro_df)
+
+
         response = {
             'message': 'Found SMILE',
             'result': found_smiles,
             'properties':{
+                #values contained in
                 'reactant_opt_energy': reactant_opt_energy_values,
                 'reactant_sp_energy': reactant_sp_values,
                 'reactant_enthalpy': enthalpy_value,
@@ -269,29 +281,9 @@ def main():
                 'dg_sp': dG_sp_value,
             }
         }
-        # print("Choose SMILE property to display")
-        '''smile_choice = int(input("Select a number: "))
-        # smile_choice = 1
-        # Condition 1: show reactant_opt_energy
-        if smile_choice == 1:
-            get_reactant_opt(search_smiles, hydro_df)
-        # Condition 2: show reactant_sp_energy
-        elif smile_choice == 2:
-            get_reactant_sp(search_smiles, hydro_df)
-        # Condition 3; show reactant_enthalpy
-        elif smile_choice == 3:
-            get_enthalpy(search_smiles, hydro_df)
-        # Condition 4: show reactant_entropy
-        elif smile_choice == 4:
-            get_entropy(search_smiles, hydro_df)
-        # Condition 5: show product_smiles
-        elif smile_choice == 5:
-            get_product_smiles(search_smiles, hydro_df)
-        # Condition 6: show functional_group_reacted
-        elif smile_choice == 6:
-            get_functional_group(search_smiles, hydro_df)'''
-        # if SMILE is not found, print out "SMILE not found"
+    # if SMILE is not found, print out "SMILE not found"
     else:
+        #response message delivered to front end
         response = {
             'message': 'SMILE not available',
             'result': []
