@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMILE Search</title>
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static',filename='ASPIRES_web.css') }}">
+</head>
+<body>
+    <form onsubmit = "SendRequest(event)">
+        <label>Enter SMILE here:</label><br><br>
+        <input type = "text" name = "smile">
+        <input type = "submit" value = "Search">
+    </form>
+    <div id="result"></div>
+    <div class="button-container">
+        <button id="reactantOpt" onclick="getProperty('reactant_opt_energy')" style="display: none;">Reactant Opt Energy</button>
+        <br><br><button id="reactantSp" onclick="getProperty('reactant_sp_energy')" style="display: none;">Reactant Sp Energy</button>
+        <br><br><button id="enthalpy" onclick="getProperty('reactant_enthalpy')" style="display: none;">Enthalpy</button>
+        <br><br><button id="entropy" onclick="getProperty('reactant_entropy')" style="display: none;">Entropy</button>
+        <br><br><button id="productSmile" onclick="getProperty('product_smile')" style="display: none;">Product SMILE</button>
+        <br><br><button id="productOpt" onclick="getProperty('product_opt_energy')" style="display: none;">Product Opt Energy</button>
+        <br><br><button id="productSp" onclick="getProperty('product_sp_energy')" style="display: none;">Product Sp Energy</button>
+        <br><br><button id="productEnthalpy" onclick="getProperty('product_enthalpy')" style="display: none;">Product Enthalpy</button>
+        <br><br><button id="productEntropy" onclick="getProperty('product_entropy')" style="display: none;">Product Entropy</button>
+        <br><br><button id="dE_opt" onclick="getProperty('de_opt')" style="display: none;">dE Opt</button>
+        <br><br><button id="dE_sp" onclick="getProperty('de_sp')" style="display: none;">dE Sp</button>
+        <br><br><button id="dH" onclick="getProperty('dh')" style="display: none;">dH</button>
+        <br><br><button id="dS" onclick="getProperty('ds')" style="display: none;">dS</button>
+        <br><br><button id="dG_opt" onclick="getProperty('dg_opt')" style="display: none;">dG Opt</button>
+        <br><br><button id="dG_sp" onclick="getProperty('dg_sp')" style="display: none;">dG Sp</button>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/hello')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = data.message;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                event.preventDefault();
+                var searchSmile = $('input[name="smile"]').val();
+                $.ajax ({
+                    type: 'POST',
+                    url: '/main',
+                    data: { smile: searchSmile },
+                    success: function (response) {
+                        console.log(response);
+                        $('#result').text(response.message);
+                        if (response.message == 'Found SMILE') {
+                            $('#reactantOpt').show();
+                            $('#reactantSp').show();
+                            $('#enthalpy').show();
+                            $('#entropy').show();
+                            $('#productSmile').show();
+                            $('#productOpt').show();
+                            $('#productSp').show();
+                            $('#productEnthalpy').show();
+                            $('#productEntropy').show();
+                            $('#dE_opt').show();
+                            $('#dE_sp').show();
+                            $('#dH').show();
+                            $('#dS').show();
+                            $('#dG_opt').show();
+                            $('#dG_sp').show();
+                        }
+                        else{
+                            $('#reactantOpt').hide();
+                            $('#reactantSp').hide();
+                            $('#enthalpy').hide();
+                            $('#entropy').hide();
+                            $('#productSmile').hide();
+                            $('#productOpt').hide();
+                            $('#productSp').hide();
+                            $('#productEnthalpy').hide();
+                            $('#productEntropy').hide();
+                            $('#dE_opt').hide();
+                            $('#dE_sp').hide();
+                            $('#dH').hide();
+                            $('#dS').hide();
+                            $('#dG_opt').hide();
+                            $('#dG_sp').hide();
+                        }
+                        function getProperty(property, detail){
+                            $('#' + property).text(detail);
+                        }
+                        $('#reactantOpt').click(function () {
+                            getProperty('reactantOpt', response.properties.reactant_opt_energy);
+                        });
+                        $('#reactantSp').click(function () {
+                            getProperty('reactantSp', response.properties.reactant_sp_energy);
+                        });
+                        $('#enthalpy').click(function () {
+                            getProperty('enthalpy', response.properties.reactant_enthalpy);
+                        });
+                        $('#entropy').click(function () {
+                            getProperty('entropy', response.properties.reactant_entropy);
+                        });
+                        $('#productSmile').click(function () {
+                            getProperty('productSmile', response.properties.product_smile);
+                        });
+                        $('#productOpt').click(function () {
+                            getProperty('productOpt', response.properties.product_opt_energy);
+                        });
+                        $('#productSp').click(function () {
+                            getProperty('productSp', response.properties.product_sp_energy);
+                        });
+                        $('#productEnthalpy').click(function () {
+                            getProperty('productEnthalpy', response.properties.product_enthalpy);
+                        });
+                        $('#productEntropy').click(function () {
+                            getProperty('productEntropy', response.properties.product_entropy);
+                        });
+                        $('#dE_opt').click(function () {
+                            getProperty('dE_opt', response.properties.de_opt);
+                        });
+                        $('#dE_sp').click(function () {
+                            getProperty('dE_sp', response.properties.de_sp);
+                        });
+                        $('#dH').click(function () {
+                            getProperty('dH', response.properties.dh);
+                        });
+                        $('#dS').click(function () {
+                            getProperty('dS', response.properties.ds);
+                        });
+                        $('#dG_opt').click(function () {
+                            getProperty('dG_opt', response.properties.dg_opt);
+                        });
+                        $('#dG_sp').click(function () {
+                            getProperty('dG_sp', response.properties.dg_sp);
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
