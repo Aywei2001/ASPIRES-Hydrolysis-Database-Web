@@ -13,8 +13,14 @@
     </form>
     <div id="result"></div>
     <div class="button-container">
-        <button id="reactantOpt" onclick="getProperty('reactant_opt_energy')" style="display: none;">Reactant Opt Energy</button>
-        <br><br><button id="reactantSp" onclick="getProperty('reactant_sp_energy')" style="display: none;">Reactant Sp Energy</button>
+        <div class="property-container">
+            <button id="reactantOpt" onclick="getProperty('reactant_opt_energy')" style="display: none;">Reactant Opt Energy</button>
+            <div id="RreactantOpt" class="property-value"></div>
+        </div>
+        <div class="property-container">
+            <br><br><button id="reactantSp" onclick="getProperty('reactant_sp_energy')" style="display: none;">Reactant Sp Energy</button>
+            <div id="RreactantSp" class="property-value"></div>
+        </div>
         <br><br><button id="enthalpy" onclick="getProperty('reactant_enthalpy')" style="display: none;">Enthalpy</button>
         <br><br><button id="entropy" onclick="getProperty('reactant_entropy')" style="display: none;">Entropy</button>
         <br><br><button id="productSmile" onclick="getProperty('product_smile')" style="display: none;">Product SMILE</button>

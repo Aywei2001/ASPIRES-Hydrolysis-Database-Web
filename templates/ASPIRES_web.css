@@ -1,3 +1,16 @@
+.property-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.property-button{
+    margin-right: 5px;
+}
+
+.property-value{
+    font-weight: normal;
+}
 
 .button-container{
     text-align: center;
