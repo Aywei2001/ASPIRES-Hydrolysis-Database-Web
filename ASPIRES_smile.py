@@ -258,12 +258,12 @@ def main():
         dG_opt_value = get_dG_opt(search_smiles, hydro_df),
         dG_sp_value = get_dG_sp(search_smiles, hydro_df)
 
-
+        #response messages that will be sent out if SMILE is found
         response = {
             'message': 'Found SMILE',
             'result': found_smiles,
             'properties':{
-                #values contained in
+                #values contained in variables returned from functions returned here
                 'reactant_opt_energy': reactant_opt_energy_values,
                 'reactant_sp_energy': reactant_sp_values,
                 'reactant_enthalpy': enthalpy_value,
@@ -283,10 +283,10 @@ def main():
         }
     # if SMILE is not found, print out "SMILE not found"
     else:
-        #response message delivered to front end
+        #response message delivered to front end if SMILE is not found
         response = {
             'message': 'SMILE not available',
-            'result': []
+            'result': [] #no results will be given if there is no SMILE
         }
 
     flask_response = make_response(jsonify(response))
