@@ -1,19 +1,33 @@
 .property-container{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 5px;
+    width: 100%;
 }
 
 .property-button{
-    margin-right: 5px;
+    margin-right: 10px;
+    padding: 6px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .property-value{
     font-weight: normal;
+    font-family: verdana, sans-serif;
 }
 
 .button-container{
-    text-align: center;
+     text-align: center;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
 }
 
 button{
